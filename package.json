@@ -1,7 +1,8 @@
 {
   "name": "tap_ui",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "license": "MIT",
   "scripts": {
     "start": "expo start",
@@ -13,7 +14,16 @@
     "storybook-generate": "sb-rn-get-stories --config-path .ondevice",
     "storybook": "cross-env STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env STORYBOOK_ENABLED='true' expo start --ios",
-    "storybook:android": "cross-env STORYBOOK_ENABLED='true' expo start --android"
+    "storybook:android": "cross-env STORYBOOK_ENABLED='true' expo start --android",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "src/**/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SatinTo/tap_ui.git"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.21.0",
@@ -44,6 +54,7 @@
     "@storybook/react-native": "^7.6.18",
     "@storybook/react-webpack5": "^7.6.18",
     "@types/react": "~18.2.45",
+    "@types/react-native": "^0.73.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-plugin-react-native-web": "^0.19.10",
