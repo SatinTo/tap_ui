@@ -1,19 +1,10 @@
-![image](https://user-images.githubusercontent.com/3481514/145904252-92e3dc1e-591f-410f-88a1-b4250f4ba6f2.png)
+# TODO:
+- [ ] Add Github Action to build and release with automatic versioning
+- [ ] Add LICENSE
+- [ ] Add CONTRIBUTING guide
 
-# getting started
-
-```sh
-npx create-expo-app --template expo-template-storybook AwesomeStorybook
-```
-
-or
-
-```sh
-yarn create expo-app --template expo-template-storybook AwesomeStorybook
-```
 
 # app
-
 ```sh
 yarn start
 ```
