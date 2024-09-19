@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-interface MyButtonProps {
+export interface MyButtonProps {
   onPress: () => void;
   text: string;
 }
