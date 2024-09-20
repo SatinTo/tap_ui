@@ -3,4 +3,3 @@ export interface NoticeProps {
     title?: String;
     types?: "default" | "alert" | "success" | "warning" | "info";
 }
-//# sourceMappingURL=Notice.types.d.ts.map

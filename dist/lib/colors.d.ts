@@ -22,4 +22,3 @@ declare const colors: {
     link: string;
 };
 export default colors;
-//# sourceMappingURL=colors.d.ts.map
