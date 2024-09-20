@@ -15,6 +15,7 @@
     "storybook:ios": "cross-env STORYBOOK_ENABLED='true' expo start --ios",
     "storybook:android": "cross-env STORYBOOK_ENABLED='true' expo start --android",
     "build": "tsc",
+    "build:watch": "tsc --watch",
     "prepublishOnly": "npm run build"
   },
   "files": [
