@@ -6,7 +6,7 @@ import colors from '../../lib/colors';
 import optimizeNumber from '../../lib/optimizeNumber';
 import { debounce } from '../../lib/debounce';
 import Shimmer from '../Shimmer';
-const LikeButton = ({ id, likesCount, disabled = false, onLikeChange, active = false, enableDebounce = false, isLoading = true }) => {
+const LikeButton = ({ id, likesCount, disabled = false, onLikeChange, active = false, enableDebounce = false, isLoading = false }) => {
     const [isLiked, setIsLiked] = useState(active);
     const [likesTotal, setLikesCount] = useState(likesCount);
     const animatedScale = useState(new Animated.Value(1))[0];

@@ -15,7 +15,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({
     onLikeChange, 
     active = false,
     enableDebounce = false,
-    isLoading = true 
+    isLoading = false 
 }) => {
     const [isLiked, setIsLiked] = useState(active);
     const [likesTotal, setLikesCount] = useState(likesCount);
