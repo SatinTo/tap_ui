@@ -24,10 +24,14 @@
     "url": "https://github.com/SatinTo/tap_ui/issues"
   },
   "homepage": "https://github.com/SatinTo/tap_ui#readme",
+  "dependencies": {
+    "react-native-heroicons": "^4.0.0"
+  },
   "peerDependencies": {
     "@babel/runtime": "*",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "^15.7.1"
   },
   "devDependencies": {
     "expo": ">=50.0.0",
