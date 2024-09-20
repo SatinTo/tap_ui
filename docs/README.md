@@ -6,6 +6,10 @@
 
 # app
 ```sh
+cd ./docs
+```
+
+```sh
 yarn start
 ```
 

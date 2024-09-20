@@ -1,7 +1,7 @@
 {
   "name": "@satinto/tap_ui",
   "version": "0.1.0",
-  "description": "A React Native UI library for Expo applications",
+  "description": "Underdevelopment UI components for React Native",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
