@@ -1,9 +1,17 @@
-export interface ProfileTileProps {
+export interface BaseProfileTileProps {
+    primaryInfo: string;
     imageUrl: string;
-    primaryInfo?: string;
     secondaryInfo?: string;
     addOnElement?: React.ReactNode;
     actionElement?: React.ReactNode;
-    isLoading: boolean
 }
 
+interface LoadingProfileTileProps {
+    isLoading: true;
+}
+
+type LoadedProfileTileProps = BaseProfileTileProps & {
+    isLoading?: false
+};
+
+export type ProfileTileProps = LoadingProfileTileProps | LoadedProfileTileProps;

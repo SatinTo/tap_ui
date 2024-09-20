@@ -2,18 +2,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Shimmer from './Shimmer';
-import { ProfileTileProps } from './ProfileTile.types';
+import { BaseProfileTileProps, ProfileTileProps } from './ProfileTile.types';
 
-
-// create a component
-const ProfileTile = ({ 
-  imageUrl, 
-  primaryInfo, 
-  secondaryInfo, 
-  addOnElement, 
-  actionElement, 
-  isLoading 
-}: ProfileTileProps) => {
+const ProfileTile: React.FC<ProfileTileProps> = ({
+    isLoading,
+    ...props
+}) => {
     if (isLoading) {
         return (
             <View style={merchantStyles.merchantInformation}>
@@ -23,12 +17,21 @@ const ProfileTile = ({
                     <Shimmer style={merchantStyles.shimmerMerchantAddress} />
                     <Shimmer style={merchantStyles.shimmerPreOrder} />
                 </View>
-                <View style={{marginLeft: "auto"}}>
+                <View style={{ marginLeft: "auto" }}>
                     <Shimmer style={merchantStyles.shimmerPreOrder} />
                 </View>
             </View>
         )
     }
+
+    const {
+        imageUrl,
+        primaryInfo,
+        secondaryInfo,
+        addOnElement,
+        actionElement
+    } = props as BaseProfileTileProps;
+
     return (
         <View style={merchantStyles.merchantInformation}>
             <View>
@@ -39,7 +42,7 @@ const ProfileTile = ({
                 <Text style={merchantStyles.merchantAddress} ellipsizeMode='tail' numberOfLines={1}>{secondaryInfo}</Text>
                 {addOnElement}
             </View>
-            <View style={{marginLeft: "auto"}}>
+            <View style={{ marginLeft: "auto" }}>
                 {actionElement}
             </View>
         </View>

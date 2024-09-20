@@ -1,9 +1,20 @@
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 //import liraries
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Shimmer from './Shimmer';
-// create a component
-const ProfileTile = ({ imageUrl, primaryInfo, secondaryInfo, addOnElement, actionElement, isLoading }) => {
+const ProfileTile = (_a) => {
+    var { isLoading } = _a, props = __rest(_a, ["isLoading"]);
     if (isLoading) {
         return (<View style={merchantStyles.merchantInformation}>
                 <Shimmer style={merchantStyles.merchantImage}/>
@@ -17,6 +28,7 @@ const ProfileTile = ({ imageUrl, primaryInfo, secondaryInfo, addOnElement, actio
                 </View>
             </View>);
     }
+    const { imageUrl, primaryInfo, secondaryInfo, addOnElement, actionElement } = props;
     return (<View style={merchantStyles.merchantInformation}>
             <View>
                 <Image style={merchantStyles.merchantImage} source={{ uri: imageUrl }}/>

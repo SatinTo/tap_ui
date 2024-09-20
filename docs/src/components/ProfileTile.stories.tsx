@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { View, Text } from "react-native";
 import ProfileTile from "./ProfileTile";
+import { ProfileTileProps } from "./ProfileTile.types";
 
 const meta = {
   title: "ProfileTile",
@@ -27,38 +28,38 @@ const meta = {
     Use this component to show a profile image, primary and secondary information, and optional add-on and action elements.
     `
   },
-} satisfies Meta<typeof ProfileTile>;
+} satisfies Meta<ProfileTileProps>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {} as any;
 
 export const Loading: Story = {
   args: {
     isLoading: true,
   },
-};
+} as any;
 
 export const LongText: Story = {
   args: {
     primaryInfo: "This is a very long name that should be truncated",
     secondaryInfo: "This is a very long description that should also be truncated",
   },
-};
+} as any;
 
 export const WithoutAddOn: Story = {
   args: {
     addOnElement: undefined,
   },
-};
+} as any;
 
 export const WithoutAction: Story = {
   args: {
     actionElement: undefined,
   },
-};
+} as any;
 
 export const MerchantExample: Story = {
   args: {
@@ -68,7 +69,7 @@ export const MerchantExample: Story = {
     addOnElement: <Text style={{ color: 'green' }}>Open</Text>,
     actionElement: <Text style={{ color: 'blue' }}>Order Now</Text>,
   },
-};
+} as any;
 
 export const ProductExample: Story = {
   args: {
@@ -78,4 +79,4 @@ export const ProductExample: Story = {
     addOnElement: <Text style={{ color: 'red' }}>Sale</Text>,
     actionElement: <Text style={{ color: 'blue' }}>Add to Cart</Text>,
   },
-};
+} as any;

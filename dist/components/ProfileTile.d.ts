@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProfileTileProps } from './ProfileTile.types';
-declare const ProfileTile: ({ imageUrl, primaryInfo, secondaryInfo, addOnElement, actionElement, isLoading }: ProfileTileProps) => React.JSX.Element;
+declare const ProfileTile: React.FC<ProfileTileProps>;
 export declare const merchantStyles: {
     merchantName: {
         fontWeight: "bold";
