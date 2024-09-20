@@ -60,31 +60,31 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {} as any;
 
 export const Active: Story = {
   args: {
     active: true,
   },
-};
+} as any;
 
 export const Disabled: Story = {
   args: {
     disabled: true,
   },
-};
+} as any;
 
 export const Loading: Story = {
   args: {
     isLoading: true,
   },
-};
+} as any;
 
 export const HighLikeCount: Story = {
   args: {
     likesCount: 1000000,
   },
-};
+} as any;
 
 export const WithCustomOnLikeChange: Story = {
   args: {
@@ -93,4 +93,4 @@ export const WithCustomOnLikeChange: Story = {
       return isLiked ? 101 : 99;
     },
   },
-};
+} as any;

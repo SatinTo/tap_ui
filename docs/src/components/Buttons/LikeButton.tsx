@@ -6,17 +6,20 @@ import colors from '../../lib/colors';
 import optimizeNumber from '../../lib/optimizeNumber';
 import { debounce } from '../../lib/debounce';
 import Shimmer from '../Shimmer';
-import { LikeButtonProps } from './LikeButton.types';
+import { BaseLikeButtonProps, LikeButtonProps } from './LikeButton.types';
 
 const LikeButton: React.FC<LikeButtonProps> = ({ 
-    id, 
-    likesCount, 
-    disabled = false, 
-    onLikeChange, 
-    active = false,
-    enableDebounce = false,
-    isLoading = false 
+    isLoading = false,
+    ...props
 }) => {
+    const {
+        id,
+        likesCount,
+        active,
+        onLikeChange,
+        disabled,
+        enableDebounce,
+    } = props as BaseLikeButtonProps;
     const [isLiked, setIsLiked] = useState(active);
     const [likesTotal, setLikesCount] = useState(likesCount);
     const animatedScale = useState(new Animated.Value(1))[0];
