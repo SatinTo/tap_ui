@@ -1,52 +1,97 @@
-# TODO:
+
+## Table of Contents
+
+- [TODO List](#todo-list)
+- [Dependencies](#dependencies)
+- [Getting Started](#getting-started)
+  - [Running Storybook](#running-storybook)
+    - [On-Device](#on-device)
+    - [Web](#web)
+- [Working on Components](#working-on-components)
+- [Building for Release](#building-for-release)
+
+## TODO List
+
 - [ ] Add Github Action to build and release with automatic versioning
 - [ ] Add LICENSE
 - [ ] Add CONTRIBUTING guide
 
+## Dependencies
 
-# app
+This project uses [Heroicons](https://github.com/ecklf/react-native-heroicons/tree/main) for icons.
+
+## Getting Started
+
+### Running Storybook
+
+First, navigate to the `docs` folder:
+
 ```sh
 cd ./docs
 ```
 
-```sh
-yarn start
-```
+#### On-Device
 
-# Ondevice
-
-In this template you can now run `yarn storybook` to start ondevice storybook or `yarn start` to start your expo app.
-This works via env variables and expo constants.
+You can run `yarn storybook` to start on-device Storybook or `yarn start` to start your Expo app. This functionality is controlled via environment variables and Expo constants.
 
 ```sh
-# either
+# Start Storybook (default)
 yarn storybook
 
-# ios
+# iOS
 yarn storybook:ios
 
-# android
+# Android
 yarn storybook:android
 ```
 
-If you add new stories on the native (ondevice version) you either need to have the watcher running or run the stories loader
-
-To update the stories one time
+To update stories for the native (on-device) version:
 
 ```sh
 yarn storybook-generate
 ```
 
-# Web
+#### Web
 
-Start react native web storybook:
+To start React Native Web Storybook:
 
-```
+```sh
 yarn storybook:web
 ```
 
-build react native web storybook:
+To build React Native Web Storybook:
 
 ```sh
 yarn build-storybook
 ```
+
+## Working on Components
+
+To work on components:
+
+1. Navigate to the `docs` folder: `cd ./docs`
+2. Create new components in the `src/components` folder
+3. Follow these guidelines:
+   - All components must have a story file named `[ComponentName].stories.tsx`
+   - All components must have a type file named `[ComponentName].types.ts`
+   - Create the main component file `[ComponentName].tsx`
+4. Add the new component to `src/index.ts` to make it accessible
+5. Build and commit your changes
+
+## Building for Release
+
+To build for release:
+
+```sh
+npm run build
+```
+
+For continuous building during development:
+
+```sh
+npm run build:watch
+```
+
+---
+
+We welcome contributions! Please check back soon for our CONTRIBUTING guide.
