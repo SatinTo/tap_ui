@@ -8,9 +8,8 @@ const preview: Preview = {
     backgrounds: {
       default: "plain",
       values: [
-        { name: "plain", value: "white" },
-        { name: "warm", value: "hotpink" },
-        { name: "cool", value: "deepskyblue" },
+        { name: "normal", value: "white" },
+        { name: "dark mode", value: "#0d1117" },
       ],
     },
     actions: { argTypesRegex: "^on[A-Z].*" },

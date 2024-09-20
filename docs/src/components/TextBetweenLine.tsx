@@ -1,9 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native';
-
-
-export interface TextBetweenLineProps {
-    children ?: String | undefined
+import { TextBetweenLineProps } from './TextBetweenLine.types';
+ 
+const TextBetweenLine: React.FC<TextBetweenLineProps> = ({children}) => {
+    return (
+        <View style={styles.container}>
+            <View style={styles.line} />
+            <Text style={styles.text}>{children}</Text>
+            <View style={styles.line} />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -24,15 +30,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 })
- 
-const TextBetweenLine: React.FC<TextBetweenLineProps> = ({children}) => {
-    return (
-        <View style={styles.container}>
-            <View style={styles.line} />
-            <Text style={styles.text}>{children}</Text>
-            <View style={styles.line} />
-        </View>
-    );
-}
  
 export default TextBetweenLine;

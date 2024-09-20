@@ -1,0 +1,7 @@
+{
+  "name": "tap_ui",
+  "slug": "tap_ui",
+  "expo": {
+    "entryPoint": "./src/entry.ts"
+  }
+}

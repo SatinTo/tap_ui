@@ -18,14 +18,17 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "noEmit": true
+    "noEmit": false,
+    "outDir": "../dist",
   },
   "include": [
     "src"
   ],
   "exclude": [
     "node_modules",
-    "**/__tests__/*"
+    "**/__tests__/*",
+    "src/App.tsx",
+    "src/entrypoint.ts"
   ],
   "extends": "expo/tsconfig.base"
 }
