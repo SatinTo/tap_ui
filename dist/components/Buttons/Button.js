@@ -85,14 +85,17 @@ const styles = StyleSheet.create({
         opacity: 0.8,
     },
     small: {
+        fontSize: 12,
         paddingHorizontal: 10,
         paddingVertical: 5,
     },
     medium: {
+        fontSize: 14,
         paddingHorizontal: 15,
         paddingVertical: 8,
     },
     large: {
+        fontSize: 16,
         paddingHorizontal: 20,
         paddingVertical: 12,
     },
