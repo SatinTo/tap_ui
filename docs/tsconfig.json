@@ -21,7 +21,8 @@
     "composite": true,
   },
   "include": [
-    "src"
+    "src",
+    "src/lib/flag"
   ],
   "exclude": [
     "node_modules",
