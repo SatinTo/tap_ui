@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
     },
     eyeIcon: {
         padding: 10,
+        marginEnd: -10
     },
     phoneContainer: {
         flexDirection: 'row',
