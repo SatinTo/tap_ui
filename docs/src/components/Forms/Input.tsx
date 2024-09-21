@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     },
     eyeIcon: {
         padding: 10,
+        paddingEnd: 5,
         marginEnd: -10
     },
     phoneContainer: {
