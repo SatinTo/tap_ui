@@ -14,4 +14,5 @@ export * from './components/AnimatedMessage.types';
 // Buttons Types
 export * from './components/Buttons/LikeButton.types';
 export * from './components/Buttons/Button.types';
+export { default as colors } from './lib/colors';
 //# sourceMappingURL=index.js.map

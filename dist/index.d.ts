@@ -12,3 +12,4 @@ export * from './components/Shimmer.types';
 export * from './components/AnimatedMessage.types';
 export * from './components/Buttons/LikeButton.types';
 export * from './components/Buttons/Button.types';
+export { default as colors } from './lib/colors';
