@@ -12,6 +12,6 @@ export interface ButtonProps {
     children: React.ReactNode;
     onPress?: (event: GestureResponderEvent) => void;
     onLongPress?: (event: GestureResponderEvent) => void;
-    style?: ViewStyle;
+    style?: ViewStyle | ViewStyle[];
 }
 export {};
