@@ -1,6 +1,6 @@
 //import liraries
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, ImageSourcePropType } from 'react-native';
 import Shimmer from './Shimmer';
 import { BaseProfileTileProps, ProfileTileProps } from './ProfileTile.types';
 
@@ -25,7 +25,7 @@ const ProfileTile: React.FC<ProfileTileProps> = ({
     }
 
     const {
-        imageUrl,
+        imageSrc,
         primaryInfo,
         secondaryInfo,
         addOnElement,
@@ -35,7 +35,10 @@ const ProfileTile: React.FC<ProfileTileProps> = ({
     return (
         <View style={merchantStyles.merchantInformation}>
             <View>
-                <Image style={merchantStyles.merchantImage} source={{ uri: imageUrl }} />
+            <Image 
+                style={merchantStyles.merchantImage} 
+                source={typeof imageSrc === 'string' ? { uri: imageSrc } : imageSrc as ImageSourcePropType} 
+            />
             </View>
             <View style={merchantStyles.merchantDetails}>
                 <Text style={merchantStyles.merchantName} ellipsizeMode='tail' numberOfLines={1}>{primaryInfo}</Text>

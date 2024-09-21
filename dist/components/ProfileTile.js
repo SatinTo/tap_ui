@@ -28,10 +28,10 @@ const ProfileTile = (_a) => {
                 </View>
             </View>);
     }
-    const { imageUrl, primaryInfo, secondaryInfo, addOnElement, actionElement } = props;
+    const { imageSrc, primaryInfo, secondaryInfo, addOnElement, actionElement } = props;
     return (<View style={merchantStyles.merchantInformation}>
             <View>
-                <Image style={merchantStyles.merchantImage} source={{ uri: imageUrl }}/>
+            <Image style={merchantStyles.merchantImage} source={typeof imageSrc === 'string' ? { uri: imageSrc } : imageSrc}/>
             </View>
             <View style={merchantStyles.merchantDetails}>
                 <Text style={merchantStyles.merchantName} ellipsizeMode='tail' numberOfLines={1}>{primaryInfo}</Text>

@@ -8,7 +8,7 @@ const meta = {
   title: "ProfileTile",
   component: ProfileTile,
   args: {
-    imageUrl: "https://loremflickr.com/cache/resized/65535_53558353379_1d3608f92d_s_60_60_nofilter.jpg",
+    imageSrc: "https://loremflickr.com/cache/resized/65535_53558353379_1d3608f92d_s_60_60_nofilter.jpg",
     primaryInfo: "John Doe",
     secondaryInfo: "Software Developer",
     addOnElement: <Text style={{ color: 'green' }}>Available</Text>,
@@ -63,7 +63,7 @@ export const WithoutAction: Story = {
 
 export const MerchantExample: Story = {
   args: {
-    imageUrl: "https://loremflickr.com/cache/resized/65535_53370820520_c4706813dc_s_60_60_nofilter.jpg",
+    imageSrc: "https://loremflickr.com/cache/resized/65535_53370820520_c4706813dc_s_60_60_nofilter.jpg",
     primaryInfo: "Tasty Burgers",
     secondaryInfo: "123 Main St, Cityville",
     addOnElement: <Text style={{ color: 'green' }}>Open</Text>,
@@ -73,7 +73,7 @@ export const MerchantExample: Story = {
 
 export const ProductExample: Story = {
   args: {
-    imageUrl: "https://loremflickr.com/cache/resized/65535_52820349952_6289fc5534_s_60_60_nofilter.jpg",
+    imageSrc: "https://loremflickr.com/cache/resized/65535_52820349952_6289fc5534_s_60_60_nofilter.jpg",
     primaryInfo: "Wireless Headphones",
     secondaryInfo: "$199.99",
     addOnElement: <Text style={{ color: 'red' }}>Sale</Text>,
