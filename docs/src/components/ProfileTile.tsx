@@ -1,25 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, Pressable, ImageStyle, ViewStyle, TextStyle } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable, ImageStyle, ViewStyle } from 'react-native';
 import Shimmer from './Shimmer';
 import { LoadedProfileTileProps, ProfileTileProps } from './ProfileTile.types';
 
 const ProfileTile: React.FC<ProfileTileProps> = ({
     isLoading,
     rounded = false,
+    rightImage = false,
     ...props
 }) => {
     if (isLoading) {
         return (
             <View style={styles.container}>
-                <Shimmer style={[styles.image, rounded && styles.roundedImage] as ViewStyle} />
-                <View style={styles.details}>
+                {!rightImage && (
+                    <Shimmer 
+                        style={[
+                            styles.image, 
+                            (rounded && styles.roundedImage) as ViewStyle,
+                            styles.imageLeft
+                        ]} 
+                    />
+                )}
+                <View style={[styles.details, rightImage ? styles.detailsRight : styles.detailsLeft]}>
                     <Shimmer style={styles.shimmerPrimaryInfo} />
                     <Shimmer style={styles.shimmerSecondaryInfo} />
                     <Shimmer style={styles.shimmerAddon} />
                 </View>
-                <View style={styles.actionContainer}>
-                    <Shimmer style={styles.shimmerAction} />
-                </View>
+                {rightImage && (
+                    <Shimmer 
+                        style={[
+                            styles.image, 
+                            (rounded && styles.roundedImage) as ViewStyle,
+                            styles.imageRight
+                        ]} 
+                    />
+                )}
             </View>
         )
     }
@@ -30,30 +45,39 @@ const ProfileTile: React.FC<ProfileTileProps> = ({
         secondaryInfo,
         addOnElement,
         actionElement,
-        rightImage = false,
         onClick
     } = props as LoadedProfileTileProps;
 
+    const imageElement = (
+        <Image 
+            style={[
+                styles.image, 
+                rounded && styles.roundedImage,
+                rightImage ? styles.imageRight : styles.imageLeft
+            ]}
+            source={typeof imageSrc === 'string' ? { uri: imageSrc } : imageSrc} 
+        />
+    );
+
+    const detailsElement = (
+        <View style={[styles.details, rightImage ? styles.detailsRight : styles.detailsLeft]}>
+            <Text style={styles.primaryInfo} ellipsizeMode='tail' numberOfLines={1}>{primaryInfo}</Text>
+            {secondaryInfo && <Text style={styles.secondaryInfo} ellipsizeMode='tail' numberOfLines={1}>{secondaryInfo}</Text>}
+            {addOnElement}
+        </View>
+    );
+
+    const actionContainerElement = actionElement && (
+        <View style={[styles.actionContainer, rightImage ? styles.actionLeft : styles.actionRight]}>
+            {actionElement}
+        </View>
+    );
+
     const content = (
         <>
-            <Image 
-                style={[
-                    styles.image,
-                    rounded && styles.roundedImage,
-                    rightImage && styles.rightImage
-                ] as ImageStyle[]}
-                source={typeof imageSrc === 'string' ? { uri: imageSrc } : imageSrc} 
-            />
-            <View style={[styles.details, rightImage && styles.rightDetails]}>
-                <Text style={styles.primaryInfo} ellipsizeMode='tail' numberOfLines={1}>{primaryInfo}</Text>
-                {secondaryInfo && <Text style={styles.secondaryInfo} ellipsizeMode='tail' numberOfLines={1}>{secondaryInfo}</Text>}
-                {addOnElement}
-            </View>
-            {actionElement && (
-                <View style={[styles.actionContainer, rightImage && styles.leftAction]}>
-                    {actionElement}
-                </View>
-            )}
+            {rightImage ? actionContainerElement : imageElement}
+            {detailsElement}
+            {rightImage ? imageElement : actionContainerElement}
         </>
     );
 
@@ -80,19 +104,23 @@ const styles = StyleSheet.create({
         height: 60,
         borderRadius: 8,
     },
+    imageLeft: {
+        marginRight: 10,
+    },
+    imageRight: {
+        marginLeft: 10,
+    },
     roundedImage: {
         borderRadius: 30,
     },
-    rightImage: {
-        alignSelf: 'flex-end',
-    } as ImageStyle,
     details: {
         flex: 1,
-        marginLeft: 10,
     },
-    rightDetails: {
-        marginLeft: 0,
+    detailsLeft: {
         marginRight: 10,
+    },
+    detailsRight: {
+        marginLeft: 10,
     },
     primaryInfo: {
         fontWeight: "bold",
@@ -103,11 +131,13 @@ const styles = StyleSheet.create({
         color: '#666'
     },
     actionContainer: {
-        marginLeft: "auto",
+        justifyContent: 'center',
     },
-    leftAction: {
-        marginLeft: 0,
-        marginRight: "auto",
+    actionLeft: {
+        marginRight: 'auto',
+    },
+    actionRight: {
+        marginLeft: 'auto',
     },
     shimmerPrimaryInfo: {
         width: 120,
@@ -120,10 +150,6 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     shimmerAddon: {
-        width: 70,
-        height: 20,
-    },
-    shimmerAction: {
         width: 70,
         height: 20,
     },

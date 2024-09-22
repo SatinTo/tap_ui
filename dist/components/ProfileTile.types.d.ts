@@ -5,16 +5,17 @@ export interface BaseProfileTileProps {
     secondaryInfo?: string;
     addOnElement?: React.ReactNode;
     actionElement?: React.ReactNode;
-    rightImage?: boolean;
     onClick?: () => void;
 }
 interface LoadingProfileTileProps {
     isLoading: true;
     rounded?: boolean;
+    rightImage?: boolean;
 }
 export type LoadedProfileTileProps = BaseProfileTileProps & {
     isLoading?: false;
     rounded?: boolean;
+    rightImage?: boolean;
 };
 export type ProfileTileProps = LoadingProfileTileProps | LoadedProfileTileProps;
 export {};

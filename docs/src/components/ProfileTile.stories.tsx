@@ -97,6 +97,13 @@ export const RightAlignedImage: Story = {
   },
 } as any;
 
+export const RightAlignedImageWithoutAction: Story = {
+  args: {
+    rightImage: true,
+    actionElement: undefined
+  },
+} as any;
+
 export const ClickableWithRoundedImage: Story = {
   args: {
     rounded: true,
