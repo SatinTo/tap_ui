@@ -14,6 +14,9 @@ const meta = {
     addOnElement: <Text style={{ color: 'green' }}>Available</Text>,
     actionElement: <Text style={{ color: 'blue' }}>View Profile</Text>,
     isLoading: false,
+    rounded: false,
+    rightImage: false,
+    onClick: () => console.log("ProfileTile clicked"),
   },
   decorators: [
     (Story) => (
@@ -26,6 +29,7 @@ const meta = {
     notes: `
     ProfileTile component for displaying user, merchant, or product information.
     Use this component to show a profile image, primary and secondary information, and optional add-on and action elements.
+    The component now supports rounded images, right-aligned images, and click functionality.
     `
   },
 } satisfies Meta<ProfileTileProps>;
@@ -78,5 +82,31 @@ export const ProductExample: Story = {
     secondaryInfo: "$199.99",
     addOnElement: <Text style={{ color: 'red' }}>Sale</Text>,
     actionElement: <Text style={{ color: 'blue' }}>Add to Cart</Text>,
+  },
+} as any;
+
+export const RoundedImage: Story = {
+  args: {
+    rounded: true,
+  },
+} as any;
+
+export const RightAlignedImage: Story = {
+  args: {
+    rightImage: true,
+  },
+} as any;
+
+export const ClickableWithRoundedImage: Story = {
+  args: {
+    rounded: true,
+    onClick: () => alert("ProfileTile clicked"),
+  },
+} as any;
+
+export const RightAlignedRoundedImage: Story = {
+  args: {
+    rounded: true,
+    rightImage: true,
   },
 } as any;

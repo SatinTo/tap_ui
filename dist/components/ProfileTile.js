@@ -9,83 +9,106 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
-//import liraries
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import Shimmer from './Shimmer';
 const ProfileTile = (_a) => {
-    var { isLoading } = _a, props = __rest(_a, ["isLoading"]);
+    var { isLoading, rounded = false } = _a, props = __rest(_a, ["isLoading", "rounded"]);
     if (isLoading) {
-        return (<View style={merchantStyles.merchantInformation}>
-                <Shimmer style={merchantStyles.merchantImage}/>
-                <View style={merchantStyles.merchantDetails}>
-                    <Shimmer style={merchantStyles.shimmerMerchantName}/>
-                    <Shimmer style={merchantStyles.shimmerMerchantAddress}/>
-                    <Shimmer style={merchantStyles.shimmerPreOrder}/>
+        return (<View style={styles.container}>
+                <Shimmer style={[styles.image, rounded && styles.roundedImage]}/>
+                <View style={styles.details}>
+                    <Shimmer style={styles.shimmerPrimaryInfo}/>
+                    <Shimmer style={styles.shimmerSecondaryInfo}/>
+                    <Shimmer style={styles.shimmerAddon}/>
                 </View>
-                <View style={{ marginLeft: "auto" }}>
-                    <Shimmer style={merchantStyles.shimmerPreOrder}/>
+                <View style={styles.actionContainer}>
+                    <Shimmer style={styles.shimmerAction}/>
                 </View>
             </View>);
     }
-    const { imageSrc, primaryInfo, secondaryInfo, addOnElement, actionElement } = props;
-    return (<View style={merchantStyles.merchantInformation}>
-            <View>
-            <Image style={merchantStyles.merchantImage} source={typeof imageSrc === 'string' ? { uri: imageSrc } : imageSrc}/>
-            </View>
-            <View style={merchantStyles.merchantDetails}>
-                <Text style={merchantStyles.merchantName} ellipsizeMode='tail' numberOfLines={1}>{primaryInfo}</Text>
-                <Text style={merchantStyles.merchantAddress} ellipsizeMode='tail' numberOfLines={1}>{secondaryInfo}</Text>
+    const { imageSrc, primaryInfo, secondaryInfo, addOnElement, actionElement, rightImage = false, onClick } = props;
+    const content = (<>
+            <Image style={[
+            styles.image,
+            rounded && styles.roundedImage,
+            rightImage && styles.rightImage
+        ]} source={typeof imageSrc === 'string' ? { uri: imageSrc } : imageSrc}/>
+            <View style={[styles.details, rightImage && styles.rightDetails]}>
+                <Text style={styles.primaryInfo} ellipsizeMode='tail' numberOfLines={1}>{primaryInfo}</Text>
+                {secondaryInfo && <Text style={styles.secondaryInfo} ellipsizeMode='tail' numberOfLines={1}>{secondaryInfo}</Text>}
                 {addOnElement}
             </View>
-            <View style={{ marginLeft: "auto" }}>
-                {actionElement}
-            </View>
-        </View>);
+            {actionElement && (<View style={[styles.actionContainer, rightImage && styles.leftAction]}>
+                    {actionElement}
+                </View>)}
+        </>);
+    if (onClick) {
+        return (<Pressable style={styles.container} onPress={onClick}>
+                {content}
+            </Pressable>);
+    }
+    return <View style={styles.container}>{content}</View>;
 };
-export const merchantStyles = StyleSheet.create({
-    merchantName: {
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 15,
+        overflow: "hidden",
+    },
+    image: {
+        width: 60,
+        height: 60,
+        borderRadius: 8,
+    },
+    roundedImage: {
+        borderRadius: 30,
+    },
+    rightImage: {
+        alignSelf: 'flex-end',
+    },
+    details: {
+        flex: 1,
+        marginLeft: 10,
+    },
+    rightDetails: {
+        marginLeft: 0,
+        marginRight: 10,
+    },
+    primaryInfo: {
         fontWeight: "bold",
         fontSize: 15
     },
-    merchantInformation: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingTop: 15,
-        paddingHorizontal: 15,
-        overflow: "hidden",
-    },
-    merchantDetails: {
-        marginLeft: 10,
-    },
-    merchantImage: {
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-    },
-    merchantAddress: {
+    secondaryInfo: {
         fontSize: 10,
         color: '#666'
     },
-    shimmerMerchantName: {
+    actionContainer: {
+        marginLeft: "auto",
+    },
+    leftAction: {
+        marginLeft: 0,
+        marginRight: "auto",
+    },
+    shimmerPrimaryInfo: {
         width: 120,
         height: 15,
-        marginLeft: 10,
-        marginTop: 15,
+        marginBottom: 5,
     },
-    shimmerMerchantAddress: {
+    shimmerSecondaryInfo: {
         width: 150,
         height: 10,
-        marginLeft: 10,
-        marginTop: 5,
+        marginBottom: 5,
     },
-    shimmerPreOrder: {
+    shimmerAddon: {
         width: 70,
         height: 20,
-        marginLeft: 10,
-        marginTop: 5,
+    },
+    shimmerAction: {
+        width: 70,
+        height: 20,
     },
 });
-//make this component available to the app
 export default ProfileTile;
 //# sourceMappingURL=ProfileTile.js.map
